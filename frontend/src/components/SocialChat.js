@@ -17,7 +17,7 @@ const SocialChat = () => {
 
   const loadSocialData = async () => {
     try {
-      const res = await axios.get('http://localhost:5003/api/social/friends-data', {
+      const res = await axios.get('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/social/friends-data', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFriends(res.data.friends);
@@ -39,7 +39,7 @@ const SocialChat = () => {
     e.preventDefault();
     setStatusMsg('');
     try {
-      const res = await axios.get(`http://localhost:5003/api/social/search?email=${searchEmail}`, {
+      const res = await axios.get(`https://cloudscope-portal-built-using-mern-stack.onrender.com/api/social/search?email=${searchEmail}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFoundUser(res.data);
@@ -51,7 +51,7 @@ const SocialChat = () => {
 
   const sendFriendRequest = async () => {
     try {
-      await axios.post('http://localhost:5003/api/social/request', { recipientId: foundUser._id }, {
+      await axios.post('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/social/request', { recipientId: foundUser._id }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStatusMsg('Request sent!');
@@ -65,7 +65,7 @@ const SocialChat = () => {
 
   const handleResponse = async (friendshipId, status) => {
     try {
-      await axios.put('http://localhost:5003/api/social/respond', { friendshipId, status }, {
+      await axios.put('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/social/respond', { friendshipId, status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       loadSocialData();
@@ -77,7 +77,7 @@ const SocialChat = () => {
   const selectFriend = async (friend) => {
     setActiveFriend(friend);
     try {
-      const res = await axios.get(`http://localhost:5003/api/social/messages/${friend._id}`, {
+      const res = await axios.get(`https://cloudscope-portal-built-using-mern-stack.onrender.com/api/social/messages/${friend._id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setChatMessages(res.data);
@@ -91,7 +91,7 @@ const SocialChat = () => {
     if (!messageInput.trim() || !activeFriend) return;
 
     try {
-      const res = await axios.post('http://localhost:5003/api/social/message', {
+      const res = await axios.post('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/social/message', {
         recipientId: activeFriend._id,
         text: messageInput
       }, {

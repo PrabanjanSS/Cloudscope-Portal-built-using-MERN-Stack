@@ -10,7 +10,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5003/api/auth/login', formData);
+      const res = await axios.post('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', res.data.username);
       window.location.href = '/dashboard';

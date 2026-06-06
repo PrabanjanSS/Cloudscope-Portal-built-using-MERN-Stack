@@ -26,7 +26,7 @@ const Dashboard = () => {
     setWeatherError('');
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get(`http://localhost:5003/api/weather/${city}`, {
+      const res = await axios.get(`https://cloudscope-portal-built-using-mern-stack.onrender.com/api/weather/${city}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setWeather(res.data);
@@ -40,7 +40,7 @@ const Dashboard = () => {
   const fetchChatHistory = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('http://localhost:5003/api/chatbot/history', {
+      const res = await axios.get('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/chatbot/history', {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -80,7 +80,7 @@ const Dashboard = () => {
 
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.post('http://localhost:5003/api/chatbot', 
+      const res = await axios.post('https://cloudscope-portal-built-using-mern-stack.onrender.com/api/chatbot', 
         { message: chatInput },
         { headers: { Authorization: `Bearer ${token}` } }
       );
